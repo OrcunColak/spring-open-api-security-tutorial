@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: spring-open-api-tutorial
+
+springdoc:
+  swagger-ui:
+    # Example to change open api URL
+    path: /swagger-ui/index.html
+    
+  api-docs:
+    enabled: true
+    groups:
+      enabled: true
+    path: /swagger-doc/v3/api-docs
+    version: openapi_3_0
