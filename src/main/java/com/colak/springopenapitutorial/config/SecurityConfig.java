@@ -14,6 +14,7 @@ public class SecurityConfig {
 
     private static final String[] SWAGGER_WHITE_LIST = {
             "/swagger-ui/**",
+            "/swagger*/**",
             "/v3/api-docs/**",
             "/v2/api-docs/**",
             "/swagger-resources/**",
@@ -22,10 +23,10 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(customizer ->
-                        customizer.requestMatchers(SWAGGER_WHITE_LIST).permitAll()
+                        customizer
+                                .requestMatchers(SWAGGER_WHITE_LIST).permitAll()
                                 .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
